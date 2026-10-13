@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فارس للجيل الخامس | منظم المناهج الكارتوني (18 أسبوعاً)</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cartoon: {
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6',
+                            pink: '#ec4899',
+                            yellow: '#f59e0b',
+                            green: '#10b981',
+                            dark: '#1e293b',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'cartoon': '0 6px 0 0 rgba(0, 0, 0, 0.15)',
+                        'cartoon-sm': '0 3px 0 0 rgba(0, 0, 0, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; user-select: none; -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
+        .dark ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.03); }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 9999px; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .cartoon-card {
+            border: 3px solid #1e293b;
+            box-shadow: 4px 4px 0px #1e293b;
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+        .dark .cartoon-card {
+            border: 3px solid #cbd5e1;
+            box-shadow: 4px 4px 0px #cbd5e1;
+            background: #0f172a;
+        }
+        .cartoon-btn {
+            border: 2px solid #1e293b;
+            box-shadow: 3px 3px 0px #1e293b;
+            transition: all 0.1s ease;
+        }
+        .cartoon-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #1e293b;
+        }
+        .dark .cartoon-btn {
+            border: 2px solid #cbd5e1;
+            box-shadow: 3px 3px 0px #cbd5e1;
+        }
+    </style>
+</head>
+
+<body class="bg-amber-50/40 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300 pb-16">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b-4 border-slate-900 dark:border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-cartoon-yellow border-3 border-slate-900 dark:border-slate-100 flex items-center justify-center text-slate-900 shadow-cartoon-sm cursor-pointer active:scale-95" onclick="resetDataConfirmation()" title="إعادة الضبط">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-base sm:text-xl font-black text-slate-900 dark:text-white">فارس للجيل الخامس | (18 أسبوعاً)</h1>
+                        <span class="px-2 py-0.5 text-[10px] font-black rounded-lg bg-cartoon-yellow text-slate-900 border-2 border-slate-900">FKH 18w</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 hidden sm:block">منظم المناهج والفروع بستايل كارتوني ممتع 🚀</p>
+                </div>
+            </div>
+
+            <!-- Header Tools -->
+            <div class="flex items-center gap-3">
+                <button id="themeToggleBtn" onclick="toggleTheme()" title="تبديل المظهر" class="p-3 rounded-xl bg-purple-100 dark:bg-slate-800 text-slate-800 dark:text-amber-400 cartoon-btn">
+                    <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-lg hidden dark:block"></i>
+                </button>
+                <button onclick="resetDataConfirmation()" title="إعادة تعيين البيانات" class="p-3 rounded-xl bg-rose-100 dark:bg-slate-800 text-rose-600 dark:text-rose-400 cartoon-btn">
+                    <i class="fa-solid fa-rotate-right text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 flex flex-col gap-6">
+
+        <!-- Search & Filter Bar -->
+        <div class="cartoon-card p-4 sm:p-5 rounded-3xl flex flex-col sm:flex-row gap-3 items-center justify-between">
+            <div class="relative w-full">
+                <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input type="text" id="searchInput" oninput="renderApp()" placeholder="ابحث عن درس أو وحدة أو فرع..." class="w-full pr-11 pl-4 py-3 rounded-2xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800 border-2 border-slate-900 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-cartoon-blue font-black text-slate-800 dark:text-slate-100">
+            </div>
+            <div class="w-full sm:w-64 flex-shrink-0">
+                <select id="filterStatus" onchange="renderApp()" class="w-full px-4 py-3 rounded-2xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800 border-2 border-slate-900 dark:border-slate-700 focus:outline-none font-black text-slate-700 dark:text-slate-200 cursor-pointer">
+                    <option value="all">عرض جميع الدروس</option>
+                    <option value="online">أخذت أونلاين</option>
+                    <option value="offline">أخذت سنتر (أوفلاين)</option>
+                    <option value="studiedSolved">تمت (ذاكرت وحليت)</option>
+                    <option value="pending">دروس متبقية</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Main Subject Tabs Bar (شاملة تبويب الإحصائيات الجديد) -->
+        <section class="flex overflow-x-auto gap-3 pb-2 no-scrollbar" id="mainSubjectTabsContainer">
+            <!-- Dynamic Main Subject Tabs & Analytics Tab -->
+        </section>
+
+        <!-- VIEW 1: TAB CONTENT FOR ANALYTICS (تبويب نسبة الإنجاز الشاملة) -->
+        <div id="analyticsTabContent" class="hidden space-y-6">
+            <!-- Top Banner Statistics Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="cartoon-card p-5 rounded-3xl flex items-center justify-between relative overflow-hidden">
+                    <div class="z-10">
+                        <p class="text-[11px] font-black text-slate-400 uppercase">إنجاز المنهج العام (18 أسبوعاً)</p>
+                        <h3 id="overallPercentage" class="text-2xl sm:text-3xl font-black mt-1 text-cartoon-blue">0%</h3>
+                        <p class="text-xs font-bold text-slate-500 mt-1">نسبة الإنجاز الإجمالية</p>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl bg-cartoon-blue/10 text-cartoon-blue flex items-center justify-center text-2xl font-black border-2 border-slate-900 dark:border-slate-100">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                </div>
+
+                <div class="cartoon-card p-5 rounded-3xl flex items-center justify-between">
+                    <div>
+                        <p class="text-[11px] font-black text-slate-400 uppercase">أونلاين</p>
+                        <h3 id="statOnline" class="text-2xl sm:text-3xl font-black mt-1 text-cyan-600">0</h3>
+                        <p class="text-xs font-bold text-slate-500 mt-1">دروس أخذت أونلاين</p>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-600 flex items-center justify-center text-2xl font-black border-2 border-slate-900 dark:border-slate-100">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+                </div>
+
+                <div class="cartoon-card p-5 rounded-3xl flex items-center justify-between">
+                    <div>
+                        <p class="text-[11px] font-black text-slate-400 uppercase">سنتر (أوفلاين)</p>
+                        <h3 id="statOffline" class="text-2xl sm:text-3xl font-black mt-1 text-amber-600">0</h3>
+                        <p class="text-xs font-bold text-slate-500 mt-1">دروس أخذت بالسنتر</p>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl font-black border-2 border-slate-900 dark:border-slate-100">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+
+                <div class="cartoon-card p-5 rounded-3xl flex items-center justify-between">
+                    <div>
+                        <p class="text-[11px] font-black text-slate-400 uppercase">ذاكرت وحليت</p>
+                        <h3 id="statStudiedSolved" class="text-2xl sm:text-3xl font-black mt-1 text-cartoon-green">0</h3>
+                        <p class="text-xs font-bold text-slate-500 mt-1">إجمالي المنتهي تماماً</p>
+                    </div>
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-cartoon-green flex items-center justify-center text-2xl font-black border-2 border-slate-900 dark:border-slate-100">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="cartoon-card p-6 rounded-3xl">
+                <h3 class="text-base font-black mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
+                    <i class="fa-solid fa-chart-pie text-cartoon-pink text-xl"></i>
+                    <span>مخطط نسبة الإنجاز لكل مادة (خطة 18 أسبوعاً)</span>
+                </h3>
+                <div class="h-64 sm:h-72 relative">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: Active Main Subject Content Container (كروت المواد والدروس) -->
+        <section id="activeSubjectContainer" class="space-y-4">
+            <!-- Dynamic Units & Lessons Cards -->
+        </section>
+
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed bottom-6 left-6 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
+
+    <script>
+        const mainSubjectsData = [
+            {
+                id: 'english',
+                title: 'اللغة الإنجليزية',
+                icon: 'fa-language',
+                units: [
+                    {
+                        title: 'Unit 1 — Living Well in a Complex World',
+                        lessons: [
+                            { id: 'eng_1_1', title: 'Social Media and Self-Image', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_1_2', title: 'Exploring Modern Lifestyles', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_1_3', title: 'Whose Responsibility Is It?', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_1_4', title: 'Understanding Mental Health', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        title: 'Unit 2 — Leisure Time',
+                        lessons: [
+                            { id: 'eng_2_1', title: 'Screen Time and Young People', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_2_2', title: 'Creative Arts as Leisure Activities', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_2_3', title: 'Sport and Physical Activity as Leisure', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_2_4', title: 'Not Exactly a Relaxing Day', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        title: 'Unit 3 — Echoes of the Past',
+                        lessons: [
+                            { id: 'eng_3_1', title: 'Sites of Memory', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_3_2', title: 'The Museum as a Storyteller', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_3_3', title: 'The Viral Past', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_3_4', title: 'Social Media and Historical Events', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        title: 'Unit 4 — The Power of Choice',
+                        lessons: [
+                            { id: 'eng_4_1', title: 'Food Waste', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_4_2', title: 'Beyond the Brand', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_4_3', title: 'Digital Consumption', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_4_4', title: 'Black Friday and Sales Culture', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        title: 'Unit 5 — Sharing the Planet',
+                        lessons: [
+                            { id: 'eng_5_1', title: 'The Climate Crisis', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_5_2', title: 'Renewable Energy – Powering a Sustainable Future', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_5_3', title: 'Greening Projects in Egypt', online: false, offline: false, studiedSolved: false },
+                            { id: 'eng_5_4', title: 'Individual and Collective Actions', online: false, offline: false, studiedSolved: false }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'history',
+                title: 'التاريخ',
+                icon: 'fa-landmark',
+                units: [
+                    {
+                        title: 'الوحدة الأولى: مصر بين الماضي والحاضر',
+                        lessons: [
+                            { id: 'hist_1_1', title: 'بناء الدولة المصرية واستمرارها عبر التاريخ', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_1_2', title: 'الدولة المصرية القديمة ومقاومة الاحتلال', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_1_3', title: 'التحولات الكبرى في مصر (العصر الوسيط)', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_1_4', title: 'التحولات الكبرى في مصر (العصر الحديث)', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        title: 'الوحدة الثانية: تحولات القوة وبناء الوعي',
+                        lessons: [
+                            { id: 'hist_2_1', title: 'سياسات الاحتلال بمصر في العصر الحديث', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_2_2', title: 'صمود الشعب المصري ومقاومة الاحتلال', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_2_3', title: 'ثورة ٢٣ يوليو ١٩٥٢م والتحولات الكبرى في مصر', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_2_4', title: 'الهوية الوطنية في مواجهة الاستعمار الجديد', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        title: 'الوحدة الثالثة: مصر وقضايا التحرر الوطني',
+                        lessons: [
+                            { id: 'hist_3_1', title: 'حركات التحرر الوطني ضد الاحتلال الفرنسي والإيطالي في العالم العربي', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_3_2', title: 'حركات التحرر الوطني ضد الاحتلال البريطاني والإسباني في العالم العربي', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_3_3', title: 'مرتكزات الدور المصري إقليميًا ودوليًا', online: false, offline: false, studiedSolved: false },
+                            { id: 'hist_3_4', title: 'دور مصر في دعم حركات التحرر الوطني', online: false, offline: false, studiedSolved: false }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'arabic',
+                title: 'اللغة العربية',
+                icon: 'fa-book-open',
+                isMultiBranch: true,
+                branches: [
+                    {
+                        id: 'arabic_texts',
+                        title: 'النصوص',
+                        icon: 'fa-book-bookmark',
+                        units: [
+                            {
+                                title: 'الوحدة الأولى — نصوص',
+                                lessons: [
+                                    { id: 'ar_t_1_1', title: 'العلم بين القانون والضمير (معلوماتي)', online: false, offline: false, studiedSolved: false },
+                                    { id: 'ar_t_1_2', title: 'الخلق جوهر الفضيلة (نثري)', online: false, offline: false, studiedSolved: false },
+                                    { id: 'ar_t_1_3', title: 'العلم نور (شعري)', online: false, offline: false, studiedSolved: false }
+                                ]
+                            },
+                            {
+                                title: 'الوحدة الثانية — نصوص',
+                                lessons: [
+                                    { id: 'ar_t_2_1', title: 'التقنية وصناعة الرأي العام (معلوماتي)', online: false, offline: false, studiedSolved: false },
+                                    { id: 'ar_t_2_2', title: 'بين الذوق والعقل (نثري)', online: false, offline: false, studiedSolved: false },
+                                    { id: 'ar_t_2_3', title: 'أثر الكلمة وحفظ اللسان (شعري)', online: false, offline: false, studiedSolved: false }
+                                ]
+                            },
+                            {
+                                title: 'الوحدة الثالثة — نصوص',
+                                lessons: [
+                                    { id: 'ar_t_3_1', title: 'حقوق الإنسان بين العالمية والخصوصية (معلوماتي)', online: false, offline: false, studiedSolved: false },
+                                    { id: 'ar_t_3_2', title: 'الحرية الفكرية (نثري)', online: false, offline: false, studiedSolved: false },
+                                    { id: 'ar_t_3_3', title: 'يا أخي الإنسان (شعري)', online: false, offline: false, studiedSolved: false }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 'arabic_grammar',
+                        title: 'النحو',
+                        icon: 'fa-pen-nib',
+                        units: [
+                            {
+                                title: 'قسم النحو',
+                                lessons: [
+                                    { id: 'gram_1', title: 'علامات الإعراب', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_2', title: 'الجملة الفعلية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_3', title: 'اللازم والمتعدي', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_4', title: 'بناء الفعل للمجهول ونائب الفاعل', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_5', title: 'المفعول لأجله والحال', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_6', title: 'الظرف', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_7', title: 'المفعول المطلق', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_8', title: 'الجملة الاسمية (المبتدأ والخبر)', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_9', title: 'كان وأخواتها', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_10', title: 'كاد وأخواتها', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_11', title: 'إن وأخواتها', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_12', title: 'أسلوبا المدح والذم', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_13', title: 'الملحقات', online: false, offline: false, studiedSolved: false },
+                                    { id: 'gram_14', title: 'كم الاستفهامية وكم الخبرية', online: false, offline: false, studiedSolved: false }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 'arabic_rhetoric',
+                        title: 'البلاغة',
+                        icon: 'fa-feather',
+                        units: [
+                            {
+                                title: 'قسم البلاغة',
+                                lessons: [
+                                    { id: 'rh_1', title: 'التشبيه', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_2', title: 'الاستعارة', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_3', title: 'أنواع الصور الخيالية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_4', title: 'المحسنات البديعية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_5', title: 'الأسلوب الخبري', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_6', title: 'الأسلوب الإنشائي وأنواعه', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_7', title: 'الإيجاز', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_8', title: 'الإطناب', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_9', title: 'الموسيقى', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_10', title: 'الوحدة الفنية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'rh_11', title: 'العلاقات بين الجمل', online: false, offline: false, studiedSolved: false }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 'arabic_expression',
+                        title: 'التعبير',
+                        icon: 'fa-comment-dots',
+                        units: [
+                            {
+                                title: 'قسم التعبير',
+                                lessons: [
+                                    { id: 'exp_1', title: 'الفقرة الحجاجية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_2', title: 'حوار قصير', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_3', title: 'موقف نقدي', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_4', title: 'كتابة فقرة نقدية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_5', title: 'كتابة رأي', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_6', title: 'الكتابة الموجهة', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_7', title: 'مشهد سردي موجز', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_8', title: 'إعادة صياغة فقرة بإيجاز', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_9', title: 'كتابة موقف حياتي', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_10', title: 'كتابة لوحة إرشادية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_11', title: 'كتابة فقرة استهلالية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_12', title: 'كتابة فقرة تحليلية', online: false, offline: false, studiedSolved: false },
+                                    { id: 'exp_13', title: 'كتابة مقطع تأملي قصير', online: false, offline: false, studiedSolved: false }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: 'arabic_stories',
+                        title: 'القصص',
+                        icon: 'fa-book-bookmark',
+                        units: [
+                            {
+                                title: 'القصص المقررة',
+                                lessons: [
+                                    { id: 'st_1', title: 'حكايات الغريب', online: false, offline: false, studiedSolved: false },
+                                    { id: 'st_2', title: 'عودة الروح', online: false, offline: false, studiedSolved: false },
+                                    { id: 'st_3', title: 'كفاح طيبة', online: false, offline: false, studiedSolved: false },
+                                    { id: 'st_4', title: 'الأرض', online: false, offline: false, studiedSolved: false },
+                                    { id: 'st_5', title: 'شمس وليل', online: false, offline: false, studiedSolved: false }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'programming',
+                title: 'البرمجة / تكنولوجيا المعلومات',
+                icon: 'fa-code',
+                units: [
+                    {
+                        title: 'الفصل الأول — تكنولوجيا المعلومات والمجتمع',
+                        lessons: [
+                            { id: 'pr_1_1', title: 'تطور تكنولوجيا المعلومات والتحول الاجتماعي', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_1_2', title: 'كيف يعمل الذكاء الاصطناعي', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_1_3', title: 'الذكاء الاصطناعي في الحياة اليومية والصناعة', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_1_4', title: 'القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        id: 'pr_2_2',
+                        title: 'الفصل الثاني — الأمن السيبراني',
+                        lessons: [
+                            { id: 'pr_2_1', title: 'تقنيات التشفير والمصادقة', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_2_2', title: 'تصميم أمن الشبكات', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_2_3', title: 'الاستجابة للحوادث وإدارة المخاطر', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        id: 'pr_3_3',
+                        title: 'الفصل الثالث — الويب',
+                        lessons: [
+                            { id: 'pr_3_1', title: 'البنية العامة لتطبيقات الويب', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_3_2', title: 'طرق الاتصال في تطبيقات الويب', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_3_3', title: 'أساسيات تكنولوجيا الواجهة الأمامية', online: false, offline: false, studiedSolved: false }
+                        ]
+                    },
+                    {
+                        id: 'pr_4_4',
+                        title: 'الفصل الرابع — تصميم الويب والوسائط',
+                        lessons: [
+                            { id: 'pr_4_1', title: 'أنواع الوسائط وخصائصها', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_4_2', title: 'تصميم المعلومات وتجربة المستخدم للمواقع الإلكترونية', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_4_3', title: 'طرق تقييم المواقع الإلكترونية', online: false, offline: false, studiedSolved: false },
+                            { id: 'pr_4_4', title: 'عملية التحسين التكراري للمواقع الإلكترونية', online: false, offline: false, studiedSolved: false }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        let appData = [];
+        let activeTab = 'english'; // إما id مادة أو 'analytics'
+        let activeArabicBranchId = 'arabic_texts';
+        let chartInstance = null;
+        let unitOpenStates = {};
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initApp();
+        });
+
+        function initApp() {
+            loadTheme();
+            const savedData = localStorage.getItem('fkh5_study_tracker_cartoon_18w');
+            if (savedData) {
+                try {
+                    appData = JSON.parse(savedData);
+                } catch (e) {
+                    appData = JSON.parse(JSON.stringify(mainSubjectsData));
+                }
+            } else {
+                appData = JSON.parse(JSON.stringify(mainSubjectsData));
+                saveData();
+            }
+            renderApp();
+        }
+
+        function saveData() {
+            localStorage.setItem('fkh5_study_tracker_cartoon_18w', JSON.stringify(appData));
+        }
+
+        function computeStats() {
+            let totalLessons = 0;
+            let totalOnline = 0;
+            let totalOffline = 0;
+            let totalStudiedSolved = 0;
+            let totalProgressPoints = 0;
+
+            appData.forEach(sub => {
+                if (sub.isMultiBranch) {
+                    sub.branches.forEach(branch => {
+                        branch.units.forEach(unit => {
+                            unit.lessons.forEach(lesson => {
+                                totalLessons++;
+                                if (lesson.online) totalOnline++;
+                                if (lesson.offline) totalOffline++;
+                                if (lesson.studiedSolved) totalStudiedSolved++;
+                                let lessonScore = 0;
+                                if (lesson.online || lesson.offline) lessonScore += 50;
+                                if (lesson.studiedSolved) lessonScore += 50;
+                                totalProgressPoints += lessonScore;
+                            });
+                        });
+                    });
+                } else {
+                    sub.units.forEach(unit => {
+                        unit.lessons.forEach(lesson => {
+                            totalLessons++;
+                            if (lesson.online) totalOnline++;
+                            if (lesson.offline) totalOffline++;
+                            if (lesson.studiedSolved) totalStudiedSolved++;
+                            let lessonScore = 0;
+                            if (lesson.online || lesson.offline) lessonScore += 50;
+                            if (lesson.studiedSolved) lessonScore += 50;
+                            totalProgressPoints += lessonScore;
+                        });
+                    });
+                }
+            });
+
+            const overallPct = totalLessons > 0 ? Math.round(totalProgressPoints / (totalLessons * 100) * 100) : 0;
+
+            document.getElementById('overallPercentage').textContent = `${overallPct}%`;
+            document.getElementById('statOnline').textContent = totalOnline;
+            document.getElementById('statOffline').textContent = totalOffline;
+            document.getElementById('statStudiedSolved').textContent = totalStudiedSolved;
+        }
+
+        function renderMainSubjectTabs() {
+            const tabsContainer = document.getElementById('mainSubjectTabsContainer');
+            tabsContainer.innerHTML = '';
+
+            // 1. أزرار المواد
+            appData.forEach(sub => {
+                let subTotal = 0;
+                let subScore = 0;
+
+                if (sub.isMultiBranch) {
+                    sub.branches.forEach(b => {
+                        b.units.forEach(u => {
+                            u.lessons.forEach(l => {
+                                subTotal++;
+                                if (l.online || l.offline) subScore += 50;
+                                if (l.studiedSolved) subScore += 50;
+                            });
+                        });
+                    });
+                } else {
+                    sub.units.forEach(u => {
+                        u.lessons.forEach(l => {
+                            subTotal++;
+                            if (l.online || l.offline) subScore += 50;
+                            if (l.studiedSolved) subScore += 50;
+                        });
+                    });
+                }
+
+                const subPct = subTotal > 0 ? Math.round(subScore / (subTotal * 100) * 100) : 0;
+                const isActive = activeTab === sub.id;
+
+                const btn = document.createElement('button');
+                btn.className = `px-5 py-3 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-2.5 whitespace-nowrap transition-all shrink-0 cartoon-btn ${isActive ? 'bg-cartoon-yellow text-slate-900' : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200'}`;
+                btn.innerHTML = `
+                    <i class="fa-solid ${sub.icon}"></i>
+                    <span>${sub.title}</span>
+                    <span class="px-2 py-0.5 rounded-lg text-[11px] bg-slate-900 text-white">${subPct}%</span>
+                `;
+                btn.onclick = () => {
+                    activeTab = sub.id;
+                    renderApp();
+                };
+                tabsContainer.appendChild(btn);
+            });
+
+            // 2. زر تبويب "نسبة الإنجاز الشاملة" الخاص
+            const isAnalyticsActive = activeTab === 'analytics';
+            const analyticsBtn = document.createElement('button');
+            analyticsBtn.className = `px-5 py-3 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-2.5 whitespace-nowrap transition-all shrink-0 cartoon-btn ${isAnalyticsActive ? 'bg-cartoon-pink text-white' : 'bg-white dark:bg-slate-900 text-cartoon-pink dark:text-pink-400'}`;
+            analyticsBtn.innerHTML = `
+                <i class="fa-solid fa-chart-pie text-base"></i>
+                <span>نسبة الإنجاز الشاملة</span>
+            `;
+            analyticsBtn.onclick = () => {
+                activeTab = 'analytics';
+                renderApp();
+            };
+            tabsContainer.appendChild(analyticsBtn);
+        }
+
+        function renderActiveContent() {
+            const activeSubjectContainer = document.getElementById('activeSubjectContainer');
+            const analyticsTabContent = document.getElementById('analyticsTabContent');
+
+            if (activeTab === 'analytics') {
+                activeSubjectContainer.classList.add('hidden');
+                analyticsTabContent.classList.remove('hidden');
+                initChart();
+            } else {
+                analyticsTabContent.classList.add('hidden');
+                activeSubjectContainer.classList.remove('hidden');
+                renderActiveSubject();
+            }
+        }
+
+        function renderActiveSubject() {
+            const container = document.getElementById('activeSubjectContainer');
+            container.innerHTML = '';
+
+            const subject = appData.find(s => s.id === activeTab);
+            if (!subject) return;
+
+            let html = `
+                <div class="cartoon-card p-5 rounded-3xl flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-2xl bg-cartoon-yellow border-2 border-slate-900 text-slate-900 flex items-center justify-center text-xl font-black shadow-cartoon-sm">
+                            <i class="fa-solid ${subject.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">${subject.title}</h3>
+                            <p class="text-xs font-bold text-slate-500 dark:text-slate-400">الكروت مقفولة افتراضياً، اضغط على الوحدة لفتحها وعرض الدروس (خطة 18 أسبوعاً) 🎯</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            if (subject.isMultiBranch) {
+                html += `<div class="flex overflow-x-auto gap-3 pb-2 mb-4 no-scrollbar">`;
+                subject.branches.forEach(branch => {
+                    const isBranchActive = branch.id === activeArabicBranchId;
+                    html += `
+                        <button onclick="activeArabicBranchId = '${branch.id}'; renderApp();" class="px-4 py-2.5 rounded-2xl text-xs font-black flex items-center gap-2 whitespace-nowrap transition-all shrink-0 cartoon-btn ${isBranchActive ? 'bg-slate-900 text-white dark:bg-amber-400 dark:text-slate-900' : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200'}">
+                            <i class="fa-solid ${branch.icon}"></i>
+                            <span>${branch.title}</span>
+                        </button>
+                    `;
+                });
+                html += `</div>`;
+
+                const activeBranch = subject.branches.find(b => b.id === activeArabicBranchId) || subject.branches[0];
+                html += renderUnitsList(activeBranch.units, subject.id, activeBranch.id);
+
+            } else {
+                html += renderUnitsList(subject.units, subject.id);
+            }
+
+            container.innerHTML = html;
+        }
+
+        function renderUnitsList(units, subId, branchId = '') {
+            const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+            const filterStatus = document.getElementById('filterStatus').value;
+
+            let unitsHtml = `<div class="space-y-4">`;
+
+            units.forEach((unit, unitIdx) => {
+                const unitKey = `${subId}_${branchId}_${unitIdx}`;
+                
+                if (unitOpenStates[unitKey] === undefined) {
+                    unitOpenStates[unitKey] = false; // مقفولة افتراضياً
+                }
+                const isOpen = unitOpenStates[unitKey];
+
+                const filteredLessons = unit.lessons.filter(l => {
+                    const matchSearch = l.title.toLowerCase().includes(searchQuery);
+                    if (!matchSearch) return false;
+
+                    if (filterStatus === 'online') return l.online;
+                    if (filterStatus === 'offline') return l.offline;
+                    if (filterStatus === 'studiedSolved') return l.studiedSolved;
+                    if (filterStatus === 'pending') return !( (l.online || l.offline) && l.studiedSolved );
+
+                    return true;
+                });
+
+                let unitTotal = unit.lessons.length;
+                let unitDone = 0;
+                unit.lessons.forEach(l => {
+                    if ((l.online || l.offline) && l.studiedSolved) unitDone++;
+                });
+                let unitPct = unitTotal > 0 ? Math.round((unitDone / unitTotal) * 100) : 0;
+
+                unitsHtml += `
+                    <div class="cartoon-card rounded-3xl overflow-hidden transition-all">
+                        <div onclick="toggleUnitCard('${unitKey}')" class="p-4 sm:p-5 bg-amber-50/40 dark:bg-slate-800/80 hover:bg-amber-100/50 dark:hover:bg-slate-800 cursor-pointer flex items-center justify-between gap-3">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-cartoon-yellow border-2 border-slate-900 text-slate-900 flex items-center justify-center text-xs font-black shadow-cartoon-sm">
+                                    ${unitIdx + 1}
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-sm sm:text-base text-slate-900 dark:text-white">${unit.title}</h4>
+                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400">${unit.lessons.length} دروس • إنجاز: ${unitPct}%</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-24 sm:w-32 bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden border-2 border-slate-900 dark:border-slate-600 hidden sm:block">
+                                    <div class="bg-cartoon-green h-full rounded-full" style="width: ${unitPct}%"></div>
+                                </div>
+                                <div class="w-8 h-8 rounded-xl bg-white dark:bg-slate-700 border-2 border-slate-900 flex items-center justify-center text-slate-900 dark:text-white shadow-cartoon-sm">
+                                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="${isOpen ? 'block' : 'hidden'} p-4 sm:p-5 border-t-2 border-slate-900 dark:border-slate-700 space-y-3 bg-slate-50/50 dark:bg-slate-900/40">
+                `;
+
+                if (filteredLessons.length === 0) {
+                    unitsHtml += `<p class="text-center text-xs font-bold text-slate-400 py-3">لا توجد دروس تطابق بحثك في هذه الوحدة.</p>`;
+                } else {
+                    filteredLessons.forEach(lesson => {
+                        const isFullyDone = (lesson.online || lesson.offline) && lesson.studiedSolved;
+
+                        unitsHtml += `
+                            <div class="p-3.5 rounded-2xl border-2 ${isFullyDone ? 'bg-emerald-50 dark:bg-emerald-950/20 border-emerald-600' : 'bg-white dark:bg-slate-800 border-slate-900 dark:border-slate-700'} shadow-cartoon-sm transition-all flex flex-col md:flex-row md:items-center justify-between gap-3">
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1">
+                                        <i class="fa-solid ${isFullyDone ? 'fa-circle-check text-emerald-600 text-lg' : 'fa-circle text-slate-300 dark:text-slate-600 text-lg'}"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-black text-sm text-slate-900 dark:text-slate-100 ${isFullyDone ? 'line-through text-slate-400 dark:text-slate-500' : ''}">${lesson.title}</h5>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-2 self-end md:self-center">
+                                    <!-- Online Toggle -->
+                                    <label class="cursor-pointer px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all select-none cartoon-btn ${lesson.online ? 'bg-blue-500 text-white' : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300'}">
+                                        <input type="checkbox" ${lesson.online ? 'checked' : ''} onchange="toggleLessonStatus('${subId}', '${lesson.id}', 'online', '${branchId}')" class="hidden">
+                                        <i class="fa-solid fa-laptop text-[11px]"></i>
+                                        <span>أونلاين</span>
+                                    </label>
+
+                                    <!-- Offline Toggle -->
+                                    <label class="cursor-pointer px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all select-none cartoon-btn ${lesson.offline ? 'bg-amber-500 text-white' : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300'}">
+                                        <input type="checkbox" ${lesson.offline ? 'checked' : ''} onchange="toggleLessonStatus('${subId}', '${lesson.id}', 'offline', '${branchId}')" class="hidden">
+                                        <i class="fa-solid fa-users text-[11px]"></i>
+                                        <span>سنتر</span>
+                                    </label>
+
+                                    <!-- Studied & Solved Toggle -->
+                                    <label class="cursor-pointer px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all select-none cartoon-btn ${lesson.studiedSolved ? 'bg-emerald-500 text-white' : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300'}">
+                                        <input type="checkbox" ${lesson.studiedSolved ? 'checked' : ''} onchange="toggleLessonStatus('${subId}', '${lesson.id}', 'studiedSolved', '${branchId}')" class="hidden">
+                                        <i class="fa-solid fa-book-bookmark text-[11px]"></i>
+                                        <span>ذاكرت وحليت</span>
+                                    </label>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                unitsHtml += `</div></div>`;
+            });
+
+            unitsHtml += `</div>`;
+            return unitsHtml;
+        }
+
+        function toggleUnitCard(unitKey) {
+            unitOpenStates[unitKey] = !unitOpenStates[unitKey];
+            renderActiveSubject();
+        }
+
+        function toggleLessonStatus(subId, lessonId, key, branchId = '') {
+            const subject = appData.find(s => s.id === subId);
+            if (!subject) return;
+
+            let targetLesson = null;
+            if (subject.isMultiBranch && branchId) {
+                const branch = subject.branches.find(b => b.id === branchId);
+                if (branch) {
+                    for (let unit of branch.units) {
+                        targetLesson = unit.lessons.find(l => l.id === lessonId);
+                        if (targetLesson) break;
+                    }
+                }
+            } else {
+                for (let unit of subject.units) {
+                    targetLesson = unit.lessons.find(l => l.id === lessonId);
+                    if (targetLesson) break;
+                }
+            }
+
+            if (targetLesson) {
+                targetLesson[key] = !targetLesson[key];
+                saveData();
+                renderApp();
+                showToast(`تم تحديث حالة الدرس بنجاح 🔥`);
+            }
+        }
+
+        function initChart() {
+            const canvas = document.getElementById('progressChart');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const isDark = document.documentElement.classList.contains('dark');
+            const textColor = isDark ? '#f8fafc' : '#1e293b';
+            const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
+
+            const labels = appData.map(s => s.title);
+            const dataPcts = appData.map(s => {
+                let total = 0;
+                let score = 0;
+                if (s.isMultiBranch) {
+                    s.branches.forEach(b => {
+                        b.units.forEach(u => {
+                            u.lessons.forEach(l => {
+                                total++;
+                                if (l.online || l.offline) score += 50;
+                                if (l.studiedSolved) score += 50;
+                            });
+                        });
+                    });
+                } else {
+                    s.units.forEach(u => {
+                        u.lessons.forEach(l => {
+                            total++;
+                            if (l.online || l.offline) score += 50;
+                            if (l.studiedSolved) score += 50;
+                        });
+                    });
+                }
+                return total > 0 ? Math.round((score / (total * 100)) * 100) : 0;
+            });
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'نسبة الإنجاز %',
+                        data: dataPcts,
+                        backgroundColor: '#3b82f6',
+                        borderColor: '#1e293b',
+                        borderWidth: 2,
+                        borderRadius: 8,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { max: 100, beginAtZero: true, ticks: { color: textColor, font: { family: 'Cairo', weight: 'bold' } }, grid: { color: gridColor } },
+                        x: { ticks: { color: textColor, font: { family: 'Cairo', weight: 'bold' } }, grid: { color: gridColor } }
+                    }
+                }
+            });
+        }
+
+        function renderApp() {
+            computeStats();
+            renderMainSubjectTabs();
+            renderActiveContent();
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('fkh5_study_theme_cartoon_18w');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('fkh5_study_theme_cartoon_18w', 'light');
+                showToast('تم التبديل إلى الوضع الفاتح');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('fkh5_study_theme_cartoon_18w', 'dark');
+                showToast('تم التبديل إلى الوضع الداكن');
+            }
+            if (activeTab === 'analytics') {
+                initChart();
+            }
+        }
+
+        function resetDataConfirmation() {
+            if (confirm('هل أنت تأكد من إعادة ضبط كافة البيانات والمناهج إلى الفهرس الافتراضي؟')) {
+                appData = JSON.parse(JSON.stringify(mainSubjectsData));
+                saveData();
+                renderApp();
+                showToast('تمت إعادة ضبط الفهرس بنجاح');
+            }
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-xs font-black px-5 py-3.5 rounded-2xl shadow-xl border-2 border-slate-900 flex items-center gap-2.5 transform transition-all duration-300 translate-y-4 opacity-0 max-w-xs';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 text-base"></i><span>${message}</span>`;
+            
+            container.appendChild(toast);
+
+            setTimeout(() => { toast.classList.remove('translate-y-4', 'opacity-0'); }, 50);
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3200);
+        }
+    </script>
+</body>
+</html>

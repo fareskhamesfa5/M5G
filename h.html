@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول حصص فصل 6/2 الكرتوني 🚀</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Tajawal & Fredoka -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Fredoka:wght@500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b',
+                        darkBorder: '#334155',
+                        cartoonYellow: '#FFD93D',
+                        cartoonOrange: '#FF8400',
+                        cartoonRed: '#FF6B6B',
+                        cartoonBlue: '#38BDF8',
+                        cartoonGreen: '#4ADE80',
+                        cartoonPurple: '#C084FC',
+                        cartoonPink: '#F472B6',
+                    },
+                    fontFamily: {
+                        tajawal: ['Tajawal', 'sans-serif'],
+                        fredoka: ['Fredoka', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'cartoon-dark': '4px 4px 0px #020617',
+                        'cartoon-dark-lg': '6px 6px 0px #020617',
+                        'cartoon-dark-sm': '2px 2px 0px #020617',
+                        'neon-yellow': '0 0 15px rgba(255, 217, 61, 0.4)',
+                        'neon-blue': '0 0 15px rgba(56, 189, 248, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0f172a;
+            background-image: radial-gradient(#1e293b 2px, transparent 2px);
+            background-size: 24px 24px;
+            color: #f8fafc;
+        }
+
+        .cartoon-border-dark {
+            border: 3px solid #020617;
+        }
+
+        .cartoon-btn {
+            transition: all 0.15s ease-in-out;
+        }
+
+        .cartoon-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #020617;
+        }
+
+        .cartoon-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #020617;
+        }
+
+        .card-hover {
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        /* Custom Dark Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38BDF8;
+            border: 2px solid #020617;
+            border-radius: 10px;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .print-full-width {
+                width: 100% !important;
+                max-width: none !important;
+                box-shadow: none !important;
+                background: white !important;
+                color: black !important;
+            }
+            .cartoon-border-dark {
+                border-color: #000 !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-3 sm:p-6 pb-12">
+
+    <!-- Header -->
+    <header class="max-w-6xl mx-auto w-full mb-6 no-print">
+        <div class="bg-darkCard cartoon-border-dark rounded-2xl p-4 sm:p-6 shadow-cartoon-dark-lg flex flex-col sm:flex-row justify-between items-center gap-4 relative overflow-hidden">
+            <!-- Decorative Visuals -->
+            <div class="absolute -left-4 -bottom-4 text-slate-800 opacity-40 text-8xl font-black select-none pointer-events-none">6/2</div>
+            <div class="absolute right-10 -top-6 text-cartoonBlue opacity-10 text-8xl select-none pointer-events-none">
+                <i class="fa-solid fa-gamepad"></i>
+            </div>
+
+            <div class="flex items-center gap-4 z-10">
+                <div class="bg-cartoonPink text-cartoonDark p-4 rounded-2xl cartoon-border-dark shadow-cartoon-dark flex items-center justify-center text-3xl font-black">
+                    🎒
+                </div>
+                <div>
+                    <div class="inline-block bg-cartoonPurple text-slate-950 px-3 py-1 rounded-full text-xs font-black mb-1 shadow-cartoon-dark-sm">
+                        جدول الحصص المدرسية
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-black tracking-wide text-white flex items-center gap-2">
+                        فصـل (6 / 2) <span class="text-cartoonYellow text-2xl">✨</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Header Quick Actions -->
+            <div class="flex flex-wrap gap-2 z-10 w-full sm:w-auto justify-end">
+                <button onclick="window.print()" class="cartoon-btn bg-cartoonBlue text-slate-950 font-black py-2.5 px-4 rounded-xl cartoon-border-dark shadow-cartoon-dark flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-print"></i>
+                    <span>طباعة الجدول</span>
+                </button>
+                <button onclick="resetFilters()" class="cartoon-btn bg-cartoonGreen text-slate-950 font-black py-2.5 px-4 rounded-xl cartoon-border-dark shadow-cartoon-dark flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span>إعادة ضبط</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Controls & Filters -->
+    <main class="max-w-6xl mx-auto w-full flex-grow">
+        <div class="bg-darkCard cartoon-border-dark rounded-2xl p-4 mb-6 shadow-cartoon-dark no-print flex flex-col md:flex-row gap-4 justify-between items-center">
+            
+            <!-- Filter by Day -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0" id="dayFilters">
+                <button onclick="filterDay('all')" id="btn-day-all" class="day-filter-btn cartoon-btn bg-cartoonYellow text-slate-950 font-black px-4 py-2 rounded-xl cartoon-border-dark shadow-cartoon-dark text-sm whitespace-nowrap active-day">
+                    🌟 كل الأيام
+                </button>
+                <button onclick="filterDay('الأحد')" id="btn-day-الأحد" class="day-filter-btn cartoon-btn bg-slate-800 text-slate-300 font-bold px-4 py-2 rounded-xl cartoon-border-dark shadow-cartoon-dark-sm text-sm whitespace-nowrap">
+                    الأحد
+                </button>
+                <button onclick="filterDay('الأثنين')" id="btn-day-الأثنين" class="day-filter-btn cartoon-btn bg-slate-800 text-slate-300 font-bold px-4 py-2 rounded-xl cartoon-border-dark shadow-cartoon-dark-sm text-sm whitespace-nowrap">
+                    الأثنين
+                </button>
+                <button onclick="filterDay('الثلاثاء')" id="btn-day-الثلاثاء" class="day-filter-btn cartoon-btn bg-slate-800 text-slate-300 font-bold px-4 py-2 rounded-xl cartoon-border-dark shadow-cartoon-dark-sm text-sm whitespace-nowrap">
+                    الثلاثاء
+                </button>
+                <button onclick="filterDay('الأربعاء')" id="btn-day-الأربعاء" class="day-filter-btn cartoon-btn bg-slate-800 text-slate-300 font-bold px-4 py-2 rounded-xl cartoon-border-dark shadow-cartoon-dark-sm text-sm whitespace-nowrap">
+                    الأربعاء
+                </button>
+                <button onclick="filterDay('الخميس')" id="btn-day-الخميس" class="day-filter-btn cartoon-btn bg-slate-800 text-slate-300 font-bold px-4 py-2 rounded-xl cartoon-border-dark shadow-cartoon-dark-sm text-sm whitespace-nowrap">
+                    الخميس
+                </button>
+            </div>
+
+            <!-- Search input -->
+            <div class="relative w-full md:w-72">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="بحث عن مادة أو معلم..." 
+                    class="w-full bg-slate-900 border-2 border-slate-700 text-white rounded-xl py-2.5 px-4 pr-10 text-sm font-bold placeholder-slate-500 focus:outline-none focus:border-cartoonBlue shadow-cartoon-dark-sm">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-cartoonBlue"></i>
+            </div>
+        </div>
+
+        <!-- Timetable View Wrapper -->
+        <div class="bg-darkCard cartoon-border-dark rounded-2xl p-4 sm:p-6 shadow-cartoon-dark-lg print-full-width relative">
+            
+            <!-- Subject Badges Row -->
+            <div class="mb-6 flex flex-wrap gap-2 justify-center no-print border-b-2 border-dashed border-slate-700 pb-4">
+                <span class="text-xs font-black text-slate-400 self-center ml-2">المواد الدراسية:</span>
+                <span class="bg-amber-950/80 border-2 border-amber-500 text-amber-300 text-xs font-black px-3 py-1 rounded-xl shadow-cartoon-dark-sm">📖 عربي</span>
+                <span class="bg-purple-950/80 border-2 border-purple-500 text-purple-300 text-xs font-black px-3 py-1 rounded-xl shadow-cartoon-dark-sm">💻 برمجة</span>
+                <span class="bg-sky-950/80 border-2 border-sky-500 text-sky-300 text-xs font-black px-3 py-1 rounded-xl shadow-cartoon-dark-sm">🔤 إنجليزي</span>
+                <span class="bg-emerald-950/80 border-2 border-emerald-500 text-emerald-300 text-xs font-black px-3 py-1 rounded-xl shadow-cartoon-dark-sm">🏛️ تاريخ</span>
+                <span class="bg-lime-950/80 border-2 border-lime-500 text-lime-300 text-xs font-black px-3 py-1 rounded-xl shadow-cartoon-dark-sm">💰 ثقافة مالية</span>
+                <span class="bg-orange-950/80 border-2 border-orange-500 text-orange-300 text-xs font-black px-3 py-1 rounded-xl shadow-cartoon-dark-sm">⚔️ عسكرية</span>
+                <span class="bg-red-950/80 border-2 border-red-500 text-red-300 text-xs font-black px-3 py-1 rounded-xl shadow-cartoon-dark-sm">⚽ ألعاب</span>
+            </div>
+
+            <!-- Responsive Table Grid -->
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[700px] border-collapse" id="timetable">
+                    <thead>
+                        <tr>
+                            <th class="p-3 cartoon-border-dark bg-cartoonYellow text-slate-950 font-black text-center text-lg w-28 rounded-rt-xl shadow-cartoon-dark-sm">
+                                اليوم
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm">
+                                <span class="block text-xs text-cartoonBlue">الحصة 1</span>
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm">
+                                <span class="block text-xs text-cartoonBlue">الحصة 2</span>
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm">
+                                <span class="block text-xs text-cartoonBlue">الحصة 3</span>
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm">
+                                <span class="block text-xs text-cartoonBlue">الحصة 4</span>
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm">
+                                <span class="block text-xs text-cartoonBlue">الحصة 5</span>
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm">
+                                <span class="block text-xs text-cartoonBlue">الحصة 6</span>
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm">
+                                <span class="block text-xs text-cartoonBlue">الحصة 7</span>
+                            </th>
+                            <th class="p-3 cartoon-border-dark bg-slate-900 text-slate-300 font-black text-center text-sm rounded-lt-xl">
+                                <span class="block text-xs text-cartoonBlue">الحصة 8</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Empty Search Results Placeholder -->
+            <div id="noResults" class="hidden text-center py-12">
+                <div class="text-6xl mb-3">🔍🎨</div>
+                <h3 class="font-black text-xl text-white mb-1">لم نجد أي حصص تطابق بحثك!</h3>
+                <p class="text-slate-400 text-sm">جرب البحث باسم مادة أخرى أو أستاذ آخر</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Lesson Details -->
+    <div id="lessonModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-darkCard cartoon-border-dark rounded-3xl p-6 max-w-md w-full shadow-cartoon-dark-lg transform transition-all relative overflow-hidden border-2 border-slate-700">
+            <!-- Modal Header Background Graphic -->
+            <div id="modalHeaderBg" class="h-20 -mx-6 -mt-6 p-4 mb-4 flex items-end justify-between border-b-4 border-slate-950 bg-cartoonYellow">
+                <span id="modalSubjectBadge" class="bg-slate-900 text-white cartoon-border-dark px-3 py-1 rounded-full text-xs font-black shadow-cartoon-dark-sm"></span>
+                <button onclick="closeModal()" class="bg-slate-900 text-white rounded-full w-8 h-8 flex items-center justify-center cartoon-border-dark shadow-cartoon-dark-sm font-black hover:bg-cartoonRed transition-colors">
+                    ✕
+                </button>
+            </div>
+
+            <div class="text-center mb-6">
+                <div id="modalIcon" class="text-6xl mb-2">📚</div>
+                <h3 id="modalSubject" class="text-2xl font-black text-white mb-1">اسم المادة</h3>
+                <p id="modalTeacher" class="text-cartoonBlue font-bold text-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>اسم المعلم</span>
+                </p>
+            </div>
+
+            <div class="bg-slate-900 cartoon-border-dark rounded-2xl p-4 mb-6 shadow-cartoon-dark-sm space-y-2 text-sm font-bold border border-slate-800">
+                <div class="flex justify-between border-b border-dashed border-slate-800 pb-2">
+                    <span class="text-slate-400">اليوم:</span>
+                    <span id="modalDay" class="text-white"></span>
+                </div>
+                <div class="flex justify-between border-b border-dashed border-slate-800 pb-2">
+                    <span class="text-slate-400">رقم الحصة:</span>
+                    <span id="modalPeriod" class="text-white"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400">نوع الحصة:</span>
+                    <span id="modalType" class="text-cartoonGreen">عادية</span>
+                </div>
+            </div>
+
+            <button onclick="closeModal()" class="w-full cartoon-btn bg-cartoonYellow text-slate-950 font-black py-3 rounded-2xl cartoon-border-dark shadow-cartoon-dark text-center">
+                إغلاق 👍
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="max-w-6xl mx-auto w-full mt-8 text-center text-xs font-bold text-slate-500 no-print">
+        <div class="bg-darkCard border border-slate-800 cartoon-border-dark py-3 px-4 rounded-xl inline-block shadow-cartoon-dark-sm">
+            جدول حصص فصل (6/2) - التصميم الداكن الكرتوني 🚀 2026
+        </div>
+    </footer>
+
+    <script>
+        // Exact Timetable Data Structure for class 6/2
+        const timetableData = [
+            {
+                day: "الأحد",
+                periods: [
+                    { num: 1, subject: "عربي", teacher: "محمد صلاح", color: "bg-amber-950/80 border-amber-500 text-amber-200", icon: "📖" },
+                    { num: 2, subject: "برمجة", teacher: "عصماء", color: "bg-purple-950/80 border-purple-500 text-purple-200", icon: "💻", isDouble: true, span: 2 },
+                    { num: 3, subject: "برمجة (ممتدة)", teacher: "عصماء", color: "bg-purple-950/80 border-purple-500 text-purple-200", icon: "💻", isMerged: true },
+                    { num: 4, subject: "عربي", teacher: "محمد صلاح", color: "bg-amber-950/80 border-amber-500 text-amber-200", icon: "📖" },
+                    { num: 5, subject: "تاريخ", teacher: "حاتم حسن", color: "bg-emerald-950/80 border-emerald-500 text-emerald-200", icon: "🏛️" },
+                    { num: 6, subject: "ثقافة مالية", teacher: "منال محمد", color: "bg-lime-950/80 border-lime-500 text-lime-200", icon: "💰" },
+                    { num: 7, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" },
+                    { num: 8, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" }
+                ]
+            },
+            {
+                day: "الأثنين",
+                periods: [
+                    { num: 1, subject: "إنجليزي", teacher: "أشرف يعقوب", color: "bg-sky-950/80 border-sky-500 text-sky-200", icon: "🔤" },
+                    { num: 2, subject: "عربي", teacher: "محمد صلاح", color: "bg-amber-950/80 border-amber-500 text-amber-200", icon: "📖" },
+                    { num: 3, subject: "إنجليزي", teacher: "أشرف يعقوب", color: "bg-sky-950/80 border-sky-500 text-sky-200", icon: "🔤" },
+                    { num: 4, subject: "تاريخ", teacher: "حاتم حسن", color: "bg-emerald-950/80 border-emerald-500 text-emerald-200", icon: "🏛️" },
+                    { num: 5, subject: "إنجليزي", teacher: "أشرف يعقوب", color: "bg-sky-950/80 border-sky-500 text-sky-200", icon: "🔤" },
+                    { num: 6, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" },
+                    { num: 7, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" },
+                    { num: 8, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" }
+                ]
+            },
+            {
+                day: "الثلاثاء",
+                periods: [
+                    { num: 1, subject: "عربي", teacher: "محمد صلاح", color: "bg-amber-950/80 border-amber-500 text-amber-200", icon: "📖" },
+                    { num: 2, subject: "برمجة", teacher: "عصماء", color: "bg-purple-950/80 border-purple-500 text-purple-200", icon: "💻", isDouble: true, span: 2 },
+                    { num: 3, subject: "برمجة (ممتدة)", teacher: "عصماء", color: "bg-purple-950/80 border-purple-500 text-purple-200", icon: "💻", isMerged: true },
+                    { num: 4, subject: "تاريخ", teacher: "حاتم حسن", color: "bg-emerald-950/80 border-emerald-500 text-emerald-200", icon: "🏛️" },
+                    { num: 5, subject: "تاريخ", teacher: "حاتم حسن", color: "bg-emerald-950/80 border-emerald-500 text-emerald-200", icon: "🏛️" },
+                    { num: 6, subject: "ثقافة مالية", teacher: "منال محمد", color: "bg-lime-950/80 border-lime-500 text-lime-200", icon: "💰" },
+                    { num: 7, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" },
+                    { num: 8, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" }
+                ]
+            },
+            {
+                day: "الأربعاء",
+                periods: [
+                    { num: 1, subject: "ع", teacher: "عسكرية 2", color: "bg-orange-950/80 border-orange-500 text-orange-200", icon: "⚔️" },
+                    { num: 2, subject: "عربي", teacher: "محمد صلاح", color: "bg-amber-950/80 border-amber-500 text-amber-200", icon: "📖" },
+                    { num: 3, subject: "تاريخ", teacher: "حاتم حسن", color: "bg-emerald-950/80 border-emerald-500 text-emerald-200", icon: "🏛️" },
+                    { num: 4, subject: "ألعاب", teacher: "س 1 ألعاب", color: "bg-red-950/80 border-red-500 text-red-200", icon: "⚽" },
+                    { num: 5, subject: "إنجليزي", teacher: "أشرف يعقوب", color: "bg-sky-950/80 border-sky-500 text-sky-200", icon: "🔤" },
+                    { num: 6, subject: "إنجليزي", teacher: "أشرف يعقوب", color: "bg-sky-950/80 border-sky-500 text-sky-200", icon: "🔤" },
+                    { num: 7, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" },
+                    { num: 8, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" }
+                ]
+            },
+            {
+                day: "الخميس",
+                periods: [
+                    { num: 1, subject: "إنجليزي", teacher: "أشرف يعقوب", color: "bg-sky-950/80 border-sky-500 text-sky-200", icon: "🔤" },
+                    { num: 2, subject: "عربي", teacher: "محمد صلاح", color: "bg-amber-950/80 border-amber-500 text-amber-200", icon: "📖" },
+                    { num: 3, subject: "برمجة", teacher: "عصماء", color: "bg-purple-950/80 border-purple-500 text-purple-200", icon: "💻", isDouble: true, span: 2 },
+                    { num: 4, subject: "برمجة (ممتدة)", teacher: "عصماء", color: "bg-purple-950/80 border-purple-500 text-purple-200", icon: "💻", isMerged: true },
+                    { num: 5, subject: "تاريخ", teacher: "حاتم حسن", color: "bg-emerald-950/80 border-emerald-500 text-emerald-200", icon: "🏛️" },
+                    { num: 6, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" },
+                    { num: 7, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" },
+                    { num: 8, subject: "", teacher: "", color: "bg-slate-900/40 text-slate-700" }
+                ]
+            }
+        ];
+
+        let activeDayFilter = 'all';
+
+        // Render Timetable Grid
+        function renderTable(filterText = '') {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            let hasResults = false;
+
+            timetableData.forEach(row => {
+                // Filter by Day
+                if (activeDayFilter !== 'all' && row.day !== activeDayFilter) {
+                    return;
+                }
+
+                // Check search filter matching
+                let matchesSearch = false;
+                if (!filterText) {
+                    matchesSearch = true;
+                } else {
+                    matchesSearch = row.periods.some(p => 
+                        p.subject.toLowerCase().includes(filterText.toLowerCase()) || 
+                        p.teacher.toLowerCase().includes(filterText.toLowerCase())
+                    );
+                }
+
+                if (!matchesSearch) return;
+
+                hasResults = true;
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-800/40 transition-colors";
+
+                // Day Label
+                const dayTd = document.createElement('td');
+                dayTd.className = "p-3 cartoon-border-dark bg-cartoonYellow font-black text-center text-slate-950 shadow-cartoon-dark-sm";
+                dayTd.innerHTML = `<span class="text-base">${row.day}</span>`;
+                tr.appendChild(dayTd);
+
+                // Periods
+                for (let i = 0; i < row.periods.length; i++) {
+                    const period = row.periods[i];
+
+                    if (period.isMerged && activeDayFilter === 'all') {
+                        continue; // Skip because span 2 handles it
+                    }
+
+                    const td = document.createElement('td');
+                    td.className = "p-1.5 cartoon-border-dark text-center align-top bg-slate-900/50";
+
+                    if (period.isDouble && activeDayFilter === 'all') {
+                        td.colSpan = period.span || 2;
+                    }
+
+                    if (period.subject) {
+                        const isMatch = filterText && (
+                            period.subject.toLowerCase().includes(filterText.toLowerCase()) || 
+                            period.teacher.toLowerCase().includes(filterText.toLowerCase())
+                        );
+
+                        const highlightClass = isMatch ? 'ring-4 ring-cartoonPink animate-pulse' : '';
+
+                        td.innerHTML = `
+                            <div onclick="openModal('${row.day}', ${period.num}, '${period.subject}', '${period.teacher}', '${period.icon}')" 
+                                 class="cursor-pointer p-2 rounded-xl border-2 cartoon-border-dark shadow-cartoon-dark-sm ${period.color} card-hover ${highlightClass} h-full flex flex-col justify-between min-h-[85px]">
+                                <div class="text-base font-black flex items-center justify-center gap-1">
+                                    <span>${period.icon || '📚'}</span>
+                                    <span>${period.subject}</span>
+                                </div>
+                                <div class="text-xs font-bold mt-1 text-slate-200 bg-slate-950/70 py-0.5 px-1.5 rounded-lg border border-slate-700/60 inline-block mx-auto max-w-full truncate">
+                                    ${period.teacher}
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        td.innerHTML = `
+                            <div class="h-full min-h-[85px] border-2 border-dashed border-slate-800 rounded-xl flex items-center justify-center text-slate-700">
+                                <span class="text-xs">فارغة</span>
+                            </div>
+                        `;
+                    }
+
+                    tr.appendChild(td);
+                }
+
+                tableBody.appendChild(tr);
+            });
+
+            const noResults = document.getElementById('noResults');
+            if (!hasResults) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        // Filter Day Action
+        function filterDay(day) {
+            activeDayFilter = day;
+            
+            document.querySelectorAll('.day-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-cartoonYellow', 'text-slate-950', 'active-day');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            const activeBtn = document.getElementById(`btn-day-${day}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
+                activeBtn.classList.add('bg-cartoonYellow', 'text-slate-950', 'active-day');
+            }
+
+            const searchVal = document.getElementById('searchInput').value;
+            renderTable(searchVal);
+        }
+
+        // Handle Search
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value;
+            renderTable(query);
+        }
+
+        // Reset Filters
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            filterDay('all');
+        }
+
+        // Modal Handlers
+        function openModal(day, periodNum, subject, teacher, icon) {
+            document.getElementById('modalDay').textContent = day;
+            document.getElementById('modalPeriod').textContent = `الحصة ${periodNum}`;
+            document.getElementById('modalSubject').textContent = subject;
+            document.getElementById('modalTeacher').textContent = teacher || "غير محدد";
+            document.getElementById('modalIcon').textContent = icon || "📚";
+            
+            const modalHeaderBg = document.getElementById('modalHeaderBg');
+            const modalSubjectBadge = document.getElementById('modalSubjectBadge');
+            
+            modalSubjectBadge.textContent = subject;
+            modalHeaderBg.className = "h-20 -mx-6 -mt-6 p-4 mb-4 flex items-end justify-between border-b-4 border-slate-950 bg-cartoonYellow";
+
+            document.getElementById('lessonModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('lessonModal').classList.add('hidden');
+        }
+
+        // DOM Ready
+        window.onload = function() {
+            renderTable();
+        };
+    </script>
+</body>
+</html>

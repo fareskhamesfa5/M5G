@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية - المنصة التعليمية</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+
+    <style id="neubrutalism-theme">
+      :root {
+        --ink: #f7f2e8;
+        --paper: #171923;
+        --yellow: #292b38;
+        --blue: #244b66;
+        --pink: #663c59;
+        --green: #36543d;
+        --purple: #4a3b68;
+      }
+      * { box-sizing: border-box; }
+      body {
+        font-family: 'Cairo', sans-serif !important;
+        color: var(--ink) !important;
+        background: var(--paper) !important;
+        background-image: radial-gradient(#ffffff18 1.2px, transparent 1.2px) !important;
+        background-size: 18px 18px !important;
+      }
+      header {
+        color: var(--ink) !important;
+        background: var(--yellow) !important;
+        border-bottom: 3px solid var(--ink) !important;
+        box-shadow: 0 6px 0 var(--ink);
+        backdrop-filter: none !important;
+      }
+      header .bg-indigo-600 {
+        background: #244b66 !important;
+        color: var(--ink) !important;
+        border: 3px solid var(--ink);
+        border-radius: 14px !important;
+        box-shadow: 4px 4px 0 var(--ink) !important;
+      }
+      header p, header .text-slate-400, header .text-slate-300 { color: var(--ink) !important; }
+      header .bg-slate-800\/80 {
+        background: white !important;
+        border: 2px solid var(--ink) !important;
+        border-radius: 999px !important;
+        color: var(--ink) !important;
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+      header .bg-emerald-500 { background: #27b45a !important; }
+      main h2 {
+        color: var(--ink) !important;
+        background: var(--pink) !important;
+        -webkit-text-fill-color: var(--ink) !important;
+        display: inline-block;
+        padding: .15em .35em;
+        border: 3px solid var(--ink);
+        border-radius: 12px;
+        box-shadow: 5px 5px 0 var(--ink);
+        transform: rotate(-1deg);
+      }
+      main > div:first-child p { color: #d7d7e0 !important; font-weight: 700; }
+      main .grid > a {
+        color: var(--ink) !important;
+        background: white !important;
+        border: 3px solid var(--ink) !important;
+        border-radius: 18px !important;
+        box-shadow: 7px 7px 0 var(--ink) !important;
+        backdrop-filter: none !important;
+        overflow: visible !important;
+        transition: transform .14s ease, box-shadow .14s ease !important;
+      }
+      main .grid > a:nth-child(1) { background: #153c53 !important; }
+      main .grid > a:nth-child(2) { background: #3d2e5d !important; }
+      main .grid > a:nth-child(3) { background: #25482f !important; }
+      main .grid > a:nth-child(4) { background: #582c48 !important; }
+      main .grid > a > .absolute { display: none !important; }
+      main .grid > a:hover {
+        transform: translate(-3px, -3px) !important;
+        box-shadow: 10px 10px 0 var(--ink) !important;
+      }
+      main .grid > a:active {
+        transform: translate(5px, 5px) !important;
+        box-shadow: 2px 2px 0 var(--ink) !important;
+      }
+      main .grid > a h3, main .grid > a p,
+      main .grid > a span { color: var(--ink) !important; }
+      main .grid > a .w-16 {
+        width: 68px !important;
+        height: 68px !important;
+        background: #222533 !important;
+        color: var(--ink) !important;
+        border: 3px solid var(--ink);
+        border-radius: 15px !important;
+        box-shadow: 4px 4px 0 var(--ink) !important;
+      }
+      main .grid > a .w-16 i { color: var(--ink) !important; }
+      main .grid > a > span:last-child {
+        border: 2px solid var(--ink);
+        background: #222533;
+        border-radius: 9px;
+        padding: 8px 12px;
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+      footer {
+        color: var(--ink) !important;
+        background: var(--yellow) !important;
+        border-top: 3px solid var(--ink) !important;
+        font-weight: 700;
+      }
+      @media (max-width: 640px) {
+        header { padding: 18px !important; }
+        main { padding-top: 2.5rem !important; padding-bottom: 3rem !important; }
+        main .grid { gap: 1.25rem !important; }
+        main .grid > a { box-shadow: 5px 5px 0 var(--ink) !important; }
+        main .grid > a:hover { box-shadow: 7px 7px 0 var(--ink) !important; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { transition-duration: .01ms !important; }
+      }
+    </style>
+
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center border-b border-slate-800/60 backdrop-blur-md bg-slate-900/50 sticky top-0 z-50">
+        <div class="flex items-center space-x-3 space-x-reverse">
+            <div class="bg-indigo-600 p-2.5 rounded-2xl text-white shadow-lg shadow-indigo-600/30">
+                <i class="fa-solid fa-graduation-cap text-2xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold tracking-wide">منصتك التعليمية</h1>
+                <p class="text-xs text-slate-400">طريقك للنجاح والتفوق</p>
+            </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-2 space-x-reverse text-sm text-slate-300 bg-slate-800/80 px-4 py-2 rounded-full border border-slate-700">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>جاهز للتعلم اليوم؟</span>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-12 flex flex-col justify-center items-center">
+        <div class="text-center max-w-2xl mb-12">
+            <h2 class="text-3xl md:text-5xl font-black mb-4 bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">
+                أهلاً بك يا بطل!
+            </h2>
+            <p class="text-slate-400 text-base md:text-lg">
+                اختر القسم الذي تريد الانتقال إليه وابدأ رحلة التفوق الدراسي بكل نشاط وحيوية.
+            </p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
+            
+            <!-- Card 1: خطط المذاكرة -->
+            <a href="M.html" class="group relative bg-slate-800/60 border border-slate-700/70 rounded-3xl p-6 flex flex-col items-center text-center transition-all duration-300 card-hover backdrop-blur-sm overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">خطط المذاكرة</h3>
+                <p class="text-slate-400 text-sm mb-6 flex-grow">نظم وقتك وطريقتك عشان توصل لأفضل تحصيل دراسي.</p>
+                <span class="inline-flex items-center text-xs font-semibold text-blue-400 group-hover:translate-x-1 transition-transform">
+                    <span>افتح القسم</span>
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i>
+                </span>
+            </a>
+
+            <!-- Card 2: مناهجك -->
+            <a href="g.html" class="group relative bg-slate-800/60 border border-slate-700/70 rounded-3xl p-6 flex flex-col items-center text-center transition-all duration-300 card-hover backdrop-blur-sm overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">مناهجك</h3>
+                <p class="text-slate-400 text-sm mb-6 flex-grow">استعرض كل المواد الدراسية والمناهج الخاصة بك بكل سهولة.</p>
+                <span class="inline-flex items-center text-xs font-semibold text-purple-400 group-hover:translate-x-1 transition-transform">
+                    <span>افتح القسم</span>
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i>
+                </span>
+            </a>
+
+            <!-- Card 3: جدولك الدراسي -->
+            <a href="h.html" class="group relative bg-slate-800/60 border border-slate-700/70 rounded-3xl p-6 flex flex-col items-center text-center transition-all duration-300 card-hover backdrop-blur-sm overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">جدولك الدراسي</h3>
+                <p class="text-slate-400 text-sm mb-6 flex-grow">تابع مواعيد الحصص والدروس اليومية والأسبوعية بدون لخبطة.</p>
+                <span class="inline-flex items-center text-xs font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">
+                    <span>افتح القسم</span>
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i>
+                </span>
+            </a>
+
+            <!-- Card 4: حول الموقع -->
+            <a href="https://fareskhamesfa5.github.io/Myfares/" target="_blank" rel="noopener noreferrer" class="group relative bg-slate-800/60 border border-slate-700/70 rounded-3xl p-6 flex flex-col items-center text-center transition-all duration-300 card-hover backdrop-blur-sm overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="w-16 h-16 rounded-2xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-pink-400 transition-colors">حول الموقع</h3>
+                <p class="text-slate-400 text-sm mb-6 flex-grow">تعرف أكثر على فكرة المنصة ومطورها ورؤيتنا المستقبلية.</p>
+                <span class="inline-flex items-center text-xs font-semibold text-pink-400 group-hover:translate-x-1 transition-transform">
+                    <span>زيارة الموقع</span>
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i>
+                </span>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="w-full py-6 text-center text-slate-500 text-sm border-t border-slate-800/60 bg-slate-900/30">
+        <p>© 2026 جميع الحقوق محفوظة - صُمم بكل إتقان لخدمتك.</p>
+    </footer>
+
+</body>
+</html>
